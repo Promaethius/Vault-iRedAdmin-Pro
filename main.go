@@ -12,5 +12,5 @@ func main() {
     flags := apiClientMeta.FlagSet()
     flags.Parse(os.Args)
 
-    plugins.Serve(New().(iRedAdmin), apiClientMeta.GetTLSConfig())
+    plugins.Serve(New().(iRedAdmin-Pro), apiClientMeta.GetTLSConfig())
 }
