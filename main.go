@@ -20,15 +20,32 @@ type iRedAdmin interface {
 }
 
 type user struct {
-    username, password, domain string
+    name, pass, domain string
 }
 
 type server struct {
     url, admin, adminpass string
+    cookie
 }
 
-func (u user, s server) loginServer() {
+func (u user, s server) loginServer(err) {
+
+    // Post to the iRedAdmin installation with the username and password of an admin passed from the user structure.
+    resp, err := resty.R().
+      SetQueryParams(map[string]string{
+          "username": u.name,
+          "password": u.pass,
+      }).
+      SetHeader("Accept", "application/json").
+      Post(s.url)
     
+    // Was the ping responsive?
+    if err != nil {
+        return(err)
+    } else {
+        // Store the auth cookie in the server structure
+        s.cookie := resp.Cookies()
+    }   
 }
 
 func (u user, s server) createUser() {
