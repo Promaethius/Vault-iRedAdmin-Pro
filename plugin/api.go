@@ -1,3 +1,7 @@
+import (
+  "gopkg.in/resty.v0"
+)
+
 // Define iRedAdmin as an interface to functions. Must satisfy user and server structs
 type iRedAdmin interface {
     // One method to login and store the cookie for iRedAdmin-Pro
