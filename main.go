@@ -4,7 +4,7 @@ import (
     "os"
     // Vault Package Dependencies
     "github.com/hashicorp/vault/helper/pluginutil"
-    "github.com/hashicorp/vault/plugins"
+    "github.com/hashicorp/vault/logical/plugins"
     // Go-Resty Dependency
     "gopkg.in/resty.v0"
 )
